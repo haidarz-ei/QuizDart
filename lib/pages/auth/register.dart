@@ -37,6 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       if (respon.statusCode == 201) {
         Navigator.pushReplacementNamed(context, "/todos");
+        
       } else {
         throw Exception("Gagal daftar nih bos. coba lagi bos");
       }
@@ -62,14 +63,14 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              Text("📝 BUAT AKUN BARU", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold,),),
+              Text("📝 yuk buat akun", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold,),),
 
               SizedBox(height: 40),
 
               TextFormField(
                 controller: firstnameController,
                 decoration: InputDecoration(
-                  hintText: "Masukkan First Name",
+                  hintText: "Masukkan nama depan",
                 ),
               ),
 
@@ -78,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
               TextFormField(
                 controller: lastnameController,
                 decoration: InputDecoration(
-                  hintText: "Masukkan Last Name",
+                  hintText: "Masukkan nama belakang",
                 ),
               ),
 
@@ -88,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: ageController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  hintText: "Masukkan Age",
+                  hintText: "Masukkan usia mu",
                 ),
               ),
 
@@ -97,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
               TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(
-                  hintText: "Masukkan Email",
+                  hintText: "Masukkan Email mu",
                 ),
               ),
 
@@ -114,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: isLoading
                       ? CircularProgressIndicator(color: Colors.white)
-                      : Text("Daftar"),
+                      : Text("Register"),
                 ),
               ),
 
