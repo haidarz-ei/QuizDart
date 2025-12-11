@@ -1,21 +1,18 @@
 import 'dart:convert';
-import 'package:ujian_api_2410910040026/models/todo_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:ujian_api_2410910040026/models/todo_model.dart';
 
 class TodoHelper {
-  Future<List<TodoModel>> getAllUsers() async {
+  final String url = "https://dummyjson.com/todos";
 
-    var uri = Uri.parse("https://dummyjson.com/users");
-
-    var respon = await http.get(uri);
-    if (respon.statusCode == 200) {
-      List<dynamic> hasil = jsonDecode(respon.body);
-      return hasil.map((json) => TodoModel.fromMap(json)).toList();
-
+  Future<List<TodoModel>> getAllTodos() async {
+    var response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      List todosJson = data['todos'];
+      return todosJson.map((e) => TodoModel.fromMap(e)).toList();
     } else {
-      throw Exception("Koneksi terganggu");
+      throw Exception("Gagal ambil data todos");
     }
   }
-
-  Future<Object?>? getTodos() async {}
 }
